@@ -1,11 +1,10 @@
 package dev.java10x.CadsatroDeNinja;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController /* controlador para API Rest*/
 //@RequestMapping("/boasVindas") /*Colocar todas as rotas no mesmo lugar*/
-public class Controller {
+public class NinjaController {
 
     @GetMapping("/boasVindas")/*ira pegar o metodo e apresentar*/
     public String boasVindas(){
