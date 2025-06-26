@@ -1,5 +1,5 @@
-package dev.java10x.CadsatroDeNinja;
-
+package dev.java10x.CadsatroDeNinja.Ninjas;
+import dev.java10x.CadsatroDeNinja.Missoes.MissoesModel;
 import jakarta.persistence.*;
 
 @Entity //anotatio que transforma a classe em um DB
@@ -12,6 +12,9 @@ public class NinjaModel {
     private String nome;
     private String email;
     private int idade;
+    @ManyToOne// um unico ninja so pode ter apenas um missao por vez
+    @JoinColumn(name = "missoes_id")//Foreingkey ou chave estrangeira
+    private MissoesModel missao;
 
     public NinjaModel() {
     }
