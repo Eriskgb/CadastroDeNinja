@@ -8,7 +8,10 @@ import java.util.Optional;
 
 public interface MissoesRepository extends JpaRepository<MissoesModel, Integer> {
 
+    //Quando a consulta ira trazer apenas um valor, pode se utilizar Optional<>
     Optional<MissoesModel> findByNome (String nome);
+
+    //Quando a consulta traz mais de um valor, utilizar Uma lista para armazenamento
     List<MissoesModel> findByNomeContaining (String nome);
     List<MissoesModel> findByDificuldade (String dificuldade);
     List<MissoesModel> findByDificuldadeOrderByDificuldadeAsc();
