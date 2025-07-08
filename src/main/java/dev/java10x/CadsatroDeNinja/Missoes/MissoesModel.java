@@ -16,7 +16,7 @@ public class MissoesModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     private String nome;
     private String dificuldade;
     @OneToMany(mappedBy = "missao") // Uma missao pode ter varios Ninjas | mappedBy mapenado a coluna da outra tabela.
