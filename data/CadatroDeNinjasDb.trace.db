@@ -1,0 +1,21 @@
+2025-07-15 18:11:41.704912-03:00 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "TB_NINJA" not found; SQL statement:
+--V2: Migration para adicionar a coluna RANK na t [42102-224]
+2025-07-15 18:30:02.504804-03:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "flyway_schema_history""flyway_schema_history""flyway_schema_history" not found; SQL statement:
+SELECT * FROM "flyway_schema_history""flyway_schema_history""flyway_schema_history"version "flyway_schema_history" [42102-224]
+2025-07-15 18:30:05.593624-03:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "flyway_schema_history""flyway_schema_history""flyway_schema_history" not found; SQL statement:
+SELECT * FROM "flyway_schema_history""flyway_schema_history""flyway_schema_history"version "flyway_schema_history" [42102-224]
+2025-07-15 18:38:08.493811-03:00 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "FLYWAY_SCHEMA_HISTORY" not found; SQL statement:
+DROP TABLE flyway_schema_history [42102-224]
+2025-07-15 18:38:44.698768-03:00 jdbc[15]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "FLYWAY_SCHEMA_HISTORY" not found; SQL statement:
+drop table flyway_schema_history [42102-224]
+2025-07-16 16:07:14.234665-03:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "DROP [*]FLYWAY_SCHEMA_HISTORY"; expected "TABLE, INDEX, USER, SEQUENCE, CONSTANT, TRIGGER, MATERIALIZED, VIEW, ROLE, ALIAS, SCHEMA, ALL OBJECTS, DOMAIN, TYPE, AGGREGATE, SYNONYM"; SQL statement:
+DROP FLYWAY_SCHEMA_HISTORY [42001-224]
+2025-07-16 16:07:30.338795-03:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "FLYWAY_SCHEMA_HISTORY" not found; SQL statement:
+DROP TABLE FLYWAY_SCHEMA_HISTORY [42102-224]
