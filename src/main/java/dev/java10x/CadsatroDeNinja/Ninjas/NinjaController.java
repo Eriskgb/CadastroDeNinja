@@ -2,7 +2,7 @@ package dev.java10x.CadsatroDeNinja.Ninjas;
 import org.springframework.web.bind.annotation.*;
 
 @RestController /* controlador para API Rest*/
-@RequestMapping("/boasVindas") /*Colocar todas as rotas no mesmo lugar*/
+@RequestMapping("ninja") /*Colocar todas as rotas no mesmo lugar*/
 public class NinjaController {
 
     @GetMapping("/boasVindas")/*ira pegar o metodo e apresentar*/
@@ -11,30 +11,27 @@ public class NinjaController {
     }
 
     //Criar um ninja (CREATE)
-    @PostMapping("/CriarNinja")
+    @PostMapping("/criar")
     public String criarNinja(){
         return "Cadastro um novo Ninja";
     }
-
     //Mostrar todos os ninjas (READ)
-    @GetMapping("/MostrarTodos")
+    @GetMapping("/listarTodos")
     public String mostrarTodosNinjas(){
         return "Mostrar todos os Ninjas";
     }
-
     //Mostar um Ninja por ID (READ)
-    @GetMapping("/MostrarID")
+    @GetMapping("/listarID")
     public String mostrarNinjasId(){
         return "Mostrar ninjas por ID";
     }
-
     //Atualizar cadastro de Ninja (UPDATE)
-    @PutMapping("/AtualizarNinja")
+    @PutMapping("/atualizar")
     public String atualizarNinja(){
         return "Atualizar Ninja por ID";
     }
     //Deletar Cadsatro de Ninja (DELETE)
-    @DeleteMapping("/DeletarNinja")
+    @DeleteMapping("/deletar")
     public String deletarNinjaId(){
         return "Deletar ninja por ID";
     }
