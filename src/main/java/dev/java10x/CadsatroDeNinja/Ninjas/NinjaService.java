@@ -9,7 +9,7 @@ public class NinjaService {
     public NinjaService(NinjaRepository ninjaRepository) {
         this.ninjaRepository = ninjaRepository;
     }
-
+    //metodo para consultar todos os ninjas do cadastro
     public List<NinjaModel> listarTodos(){
         return ninjaRepository.findAll();
     }

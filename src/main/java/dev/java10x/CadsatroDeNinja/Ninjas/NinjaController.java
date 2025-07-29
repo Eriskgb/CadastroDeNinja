@@ -23,21 +23,25 @@ public class NinjaController {
     public String criarNinja(){
         return "Cadastro um novo Ninja";
     }
+
     //Mostrar todos os ninjas (READ)
     @GetMapping("/listarTodos")
     public List<NinjaModel> listarTodos(){
         return ninjaService.listarTodos();
     }
+
     //Mostar um Ninja por ID (READ)
     @GetMapping("/listarID")
     public String mostrarNinjasId(){
         return "Mostrar ninjas por ID";
     }
+
     //Atualizar cadastro de Ninja (UPDATE)
     @PutMapping("/atualizar")
     public String atualizarNinja(){
         return "Atualizar Ninja por ID";
     }
+
     //Deletar Cadsatro de Ninja (DELETE)
     @DeleteMapping("/deletar")
     public String deletarNinjaId(){
