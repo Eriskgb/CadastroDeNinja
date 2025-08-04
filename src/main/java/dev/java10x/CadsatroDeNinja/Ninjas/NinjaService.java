@@ -13,4 +13,17 @@ public class NinjaService {
     public List<NinjaModel> listarTodos(){
         return ninjaRepository.findAll();
     }
+
+    //Metodo para listsar os ninjas por ID
+    public NinjaModel listarId (long id){
+        return ninjaRepository.findById(id).orElseThrow(()-> new RuntimeException("Ninja nao encontrado" + id));
+    }
+
+    //Metodo para deletar registro
+    public void deletarId(long id){
+        if (!ninjaRepository.existsById(id)) {
+            throw new RuntimeException("Ninja nao encontrado" + id);
+        }
+        ninjaRepository.deleteById(id);
+    }
 }

@@ -31,9 +31,9 @@ public class NinjaController {
     }
 
     //Mostar um Ninja por ID (READ)
-    @GetMapping("/listarID")
-    public String mostrarNinjasId(){
-        return "Mostrar ninjas por ID";
+    @GetMapping("/listarId")
+    public NinjaModel listarId(long id){
+        return ninjaService.listarId(id);
     }
 
     //Atualizar cadastro de Ninja (UPDATE)
@@ -43,9 +43,9 @@ public class NinjaController {
     }
 
     //Deletar Cadsatro de Ninja (DELETE)
-    @DeleteMapping("/deletar")
-    public String deletarNinjaId(){
-        return "Deletar ninja por ID";
+    @DeleteMapping("/deletarId")
+    public void deletarId(long id){
+        ninjaService.deletarId(id);
     }
 
 }
