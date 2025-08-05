@@ -1,6 +1,9 @@
 package dev.java10x.CadsatroDeNinja.Ninjas;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
+
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class NinjaService {
@@ -15,8 +18,9 @@ public class NinjaService {
     }
 
     //Metodo para listsar os ninjas por ID
-    public NinjaModel listarId (long id){
-        return ninjaRepository.findById(id).orElseThrow(()-> new RuntimeException("Ninja nao encontrado" + id));
+    public NinjaModel listarId (Long id){
+        Optional<NinjaModel>  ninjaId = ninjaRepository.findById(id);
+        return ninjaId.orElseThrow(() -> new RuntimeException("Ninja nao encontrado"));
     }
 
     //Metodo para deletar registro
