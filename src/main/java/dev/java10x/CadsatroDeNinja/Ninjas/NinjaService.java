@@ -23,6 +23,11 @@ public class NinjaService {
         return ninjaId.orElseThrow(() -> new RuntimeException("Ninja nao encontrado"));
     }
 
+    //Meotod para criar nono ninja
+    public NinjaModel criarNinja(NinjaModel ninja){
+        return ninjaRepository.save(ninja);
+    }
+
     //Metodo para deletar registro
     public void deletarId(long id){
         if (!ninjaRepository.existsById(id)) {
