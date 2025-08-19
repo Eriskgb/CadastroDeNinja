@@ -4,18 +4,13 @@ import java.util.List;
 
 
 @RestController /* controlador para API Rest*/
-@RequestMapping("/ninja") /*Colocar todas as rotas no mesmo lugar*/
+@RequestMapping("/ninjas") /*Colocar todas as rotas no mesmo lugar*/
 public class NinjaController {
 
     private NinjaService ninjaService;
 
     public NinjaController(NinjaService ninjaService) {
         this.ninjaService = ninjaService;
-    }
-
-    @GetMapping("/boasVindas")/*ira pegar o metodo e apresentar*/
-    public String boasVindas(){
-        return "Seja Bem Vindo, essa e a minha primeira Rota";
     }
 
     //Criar um ninja (CREATE)
@@ -37,15 +32,16 @@ public class NinjaController {
     }
 
     //Atualizar cadastro de Ninja (UPDATE)
-    @PutMapping("/atualizar")
-    public String atualizarNinja(){
-        return "Atualizar Ninja por ID";
+    @PutMapping("/atualizar/{id}")
+    public NinjaModel atualizarID(@PathVariable Long id, @RequestBody NinjaModel ninja){
+        return ninjaService.atualizarId(id,ninja);
     }
 
     //Deletar Cadsatro de Ninja (DELETE)
-    @DeleteMapping("/deletarId")
-    public void deletarId(long id){
+    @DeleteMapping("/deletar/{id}")
+    public void deletarId(@PathVariable Long id){
         ninjaService.deletarId(id);
     }
+
 
 }
