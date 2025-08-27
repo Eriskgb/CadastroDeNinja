@@ -1,7 +1,6 @@
 package dev.java10x.CadsatroDeNinja.Ninjas;
+import dev.java10x.CadsatroDeNinja.Exceptions.CadastroNotFound;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -12,6 +11,7 @@ public class NinjaService {
     public NinjaService(NinjaRepository ninjaRepository) {
         this.ninjaRepository = ninjaRepository;
     }
+
     //metodo para consultar todos os ninjas do cadastro
     public List<NinjaModel> listarTodos(){
         return ninjaRepository.findAll();
@@ -30,7 +30,11 @@ public class NinjaService {
 
     //Metodo para deletar registro
     public void deletarId(Long id){
-       ninjaRepository.deleteById(id);
+        if(ninjaRepository.existsById(id)){
+            ninjaRepository.deleteById(id);
+        }else{
+            throw new CadastroNotFound("Cadastro de Ninha nao encontrado");
+        }
     }
 
     //Metodo para ataualizar um cadastro ja existesnte
