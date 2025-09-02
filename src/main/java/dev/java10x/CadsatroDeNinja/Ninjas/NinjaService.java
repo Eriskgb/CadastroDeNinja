@@ -6,10 +6,14 @@ import java.util.Optional;
 
 @Service
 public class NinjaService {
-    private NinjaRepository ninjaRepository;
 
-    public NinjaService(NinjaRepository ninjaRepository) {
+    //Injecao de dependencia
+    private NinjaRepository ninjaRepository;
+    private NinjasMapper ninjasMapper;
+
+    public NinjaService(NinjaRepository ninjaRepository, NinjasMapper ninjasMapper) {
         this.ninjaRepository = ninjaRepository;
+        this.ninjasMapper = ninjasMapper;
     }
 
     //metodo para consultar todos os ninjas do cadastro
@@ -19,13 +23,15 @@ public class NinjaService {
 
     //Metodo para listsar os ninjas por ID
     public NinjaModel listarId (Long id){
-        Optional<NinjaModel>  ninjaId = ninjaRepository.findById(id);
-        return ninjaId.orElseThrow(() -> new RuntimeException("Ninja nao encontrado"));
+       return ninjaRepository.findById(id).orElse(null);
+
     }
 
     //Meotod para criar novo ninja
-    public NinjaModel criarNinja(NinjaModel ninja){
-        return ninjaRepository.save(ninja);
+    public NinjasDTO criarNinja(NinjasDTO ninjaDTO){
+        NinjaModel ninja = ninjasMapper.map(ninjaDTO);
+        ninja = ninjaRepository.save(ninja);
+        return ninjasMapper.map(ninja);
     }
 
     //Metodo para deletar registro
