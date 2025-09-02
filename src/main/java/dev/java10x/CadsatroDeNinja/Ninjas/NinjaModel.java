@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity //anotatio que transforma a classe em um DB
+@Entity //anotatio que transforma(cria um relacionamento com o banco de dados) a classe em um DB
 @Table(name = "tb_ninja")
 @NoArgsConstructor // Criado o construtor vazio
 @AllArgsConstructor//Criado os contrutores com varios argumentos
@@ -20,6 +20,7 @@ public class NinjaModel {
     private String email;
     private String imgUrl;
     private int idade;
+    private String rank;
     @ManyToOne// um unico ninja so pode ter apenas um missao por vez
     @JoinColumn(name = "missoes_id")//Foreingkey ou chave estrangeira
     private MissoesModel missao;
