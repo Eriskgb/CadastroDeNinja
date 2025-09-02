@@ -22,9 +22,9 @@ public class NinjaService {
     }
 
     //Metodo para listsar os ninjas por ID
-    public NinjaModel listarId (Long id){
-       return ninjaRepository.findById(id).orElse(null);
-
+    public NinjasDTO listarId (Long id){
+       Optional<NinjaModel> ninjaModel = ninjaRepository.findById(id); //Verificando a existencia do ID passado no paramettro e armazenando na varial
+       return ninjaModel.map(ninjasMapper::map).orElse(null); // retornando o valor utilizando streams
     }
 
     //Meotod para criar novo ninja
@@ -44,12 +44,15 @@ public class NinjaService {
     }
 
     //Metodo para ataualizar um cadastro ja existesnte
-    public NinjaModel atualizarId(Long id, NinjaModel ninjaAtualizado){
-        if(ninjaRepository.existsById(id)){
-            ninjaAtualizado.setId(id);
-            return ninjaRepository.save(ninjaAtualizado);
-        }
-        return null;
+    public NinjasDTO atualizarId(Long id, NinjasDTO ninjasDTO){
+       Optional<NinjaModel> ninjaExiste = ninjaRepository.findById(id); //Verificando a existe do ID
+       if(ninjaExiste.isPresent()){ //Verificando se o dado esta
+           NinjaModel ninjaUpdate = ninjasMapper.map(ninjasDTO); // guardando os dados novo passados pelo usuario
+           ninjaUpdate.setId(id); //setando esse novos dados ao ID que foi consultado\
+           NinjaModel ninjaSave = ninjaRepository.save(ninjaUpdate); //Salvando os dados novos
+           return ninjasMapper.map(ninjaSave);// retornando o novo cadastro atualizado
+       }
+       return null;
     }
 
 }
