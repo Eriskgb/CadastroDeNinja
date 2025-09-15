@@ -22,7 +22,7 @@ public class MissoesService {
     //Metodo CREATE
     public MissoesDTO criar(MissoesDTO missaoDTO){
         MissoesModel missao = missoesMapper.map(missaoDTO); // Criando estancia MissoesModel e mapeando para receber missaoDTO
-        missao = missoesRepository.save(missao);//Pegando os dados da Variavel missao e salvando no banco
+        missao = missoesRepository.save(missao);//Pegando os dados da Variavel missao e salvando no bancos
         return missoesMapper.map(missao);//retornando para usuario
     }
 
