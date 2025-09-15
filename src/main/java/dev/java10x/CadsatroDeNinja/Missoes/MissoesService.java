@@ -6,41 +6,59 @@ import org.springframework.stereotype.Service;
 import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class MissoesService {
 
     MissoesRepository missoesRepository;
+    MissoesMapper missoesMapper;
 
-    public MissoesService(MissoesRepository missoesRepository) {
+    public MissoesService(MissoesRepository missoesRepository, MissoesMapper missoesMapper) {
         this.missoesRepository = missoesRepository;
+        this.missoesMapper = missoesMapper;
     }
 
     //Metodo CREATE
-    public MissoesModel criar(MissoesModel missao){
-        return missoesRepository.save(missao);
+    public MissoesDTO criar(MissoesDTO missaoDTO){
+        MissoesModel missao = missoesMapper.map(missaoDTO); // Criando estancia MissoesModel e mapeando para receber missaoDTO
+        missao = missoesRepository.save(missao);//Pegando os dados da Variavel missao e salvando no bancos
+        return missoesMapper.map(missao);//retornando para usuario
     }
 
     //Metodo READ
-    public List<MissoesModel> listarTodos(){
-        return missoesRepository.findAll();
+    public List<MissoesDTO> listarTodos(){
+        List<MissoesModel> missoes = missoesRepository.findAll();
+        return missoes.stream()
+                .map(missoesMapper::map)
+                .collect(Collectors.toList());
+    }
+
+    //Metodo para Listar por ID
+    public MissoesDTO listarID(Long id){
+        Optional<MissoesModel> missaoID = missoesRepository.findById(id);
+        return missaoID.map(missoesMapper::map).orElse(null);
     }
 
     //Metodo Update
-    public MissoesModel atualizar(Long id, MissoesModel missao){
-        if(missoesRepository.existsById(id)){
-            missao.setId(id);
-            return missoesRepository.save(missao);
+    public MissoesDTO atualizar(Long id, MissoesDTO missaoDTO){
+        Optional<MissoesModel> missao = missoesRepository.findById(id);
+        if(missao.isPresent()){
+            MissoesModel missaoUpdate = missoesMapper.map(missaoDTO);
+            missaoUpdate.setId(id);
+            MissoesModel missaoSave = missoesRepository.save(missaoUpdate);
+            return missoesMapper.map(missaoSave);
         }
         return null;
     }
 
     //Metodo para Deletar
     public void deletar(Long id) {
-        if (missoesRepository.existsById(id)) {
+        if(missoesRepository.existsById(id)){
             missoesRepository.deleteById(id);
-        }else{
-            throw new CadastroNotFound("Cadastro nao encontrado");
+        }else {
+            throw new CadastroNotFound("Missao nao encontrada");
         }
+
     }
 }
