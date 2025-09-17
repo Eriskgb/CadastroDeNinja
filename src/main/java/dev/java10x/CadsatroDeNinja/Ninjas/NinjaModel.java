@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "tb_ninja")
 @NoArgsConstructor // Criado o construtor vazio
 @AllArgsConstructor//Criado os contrutores com varios argumentos
-@Data//Cria os Geters e Seters
+@Data
 public class NinjaModel {
 
     @Id// anotation para criar um ID automatico
