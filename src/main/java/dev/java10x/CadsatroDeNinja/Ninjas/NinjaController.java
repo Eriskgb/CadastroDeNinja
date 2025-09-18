@@ -45,10 +45,9 @@ public class NinjaController {
     //Atualizar cadastro de Ninja (UPDATE)
     @PutMapping("/atualizar/{id}")
     public ResponseEntity<?> atualizarID(@PathVariable Long id, @RequestBody NinjasDTO ninja){
-        NinjasDTO ninjasExists = ninjaService.listarId(id); // verificando a existencia e armazenando no variavel
+        NinjasDTO ninjasExists = ninjaService.atualizarId(id,ninja); // verificando a existencia e armazenando no variavel
         if(ninjasExists != null){ // validando a existencia
-            NinjasDTO ninjaUpdate = ninjaService.atualizarId(id,ninja); // armazenando o retorno quando existe
-            return ResponseEntity.ok(ninjaUpdate); // retornando para o suario o valor com msg de sucesso
+            return ResponseEntity.ok(ninjasExists); // retornando para o suario o valor com msg de sucesso
         }else{
             return ResponseEntity.status(HttpStatus.NOT_FOUND) // retornando para usuario que nao foi encontrado
                     .body("Nao foi possivel atualizar ninja com ID: " + id + " , nao existe no banco de dados");

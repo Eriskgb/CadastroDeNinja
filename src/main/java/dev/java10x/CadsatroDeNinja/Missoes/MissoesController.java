@@ -1,4 +1,7 @@
 package dev.java10x.CadsatroDeNinja.Missoes;
+import dev.java10x.CadsatroDeNinja.Ninjas.NinjasDTO;
+import org.apache.coyote.Response;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,32 +19,60 @@ public class MissoesController {
 
     //Metodo CREATE
     @PostMapping("/criar")
-    public MissoesDTO criar(@RequestBody MissoesDTO missaoDTO){
-        return missoesService.criar(missaoDTO);
+    public ResponseEntity<String> criar(@RequestBody MissoesDTO missaoDTO){
+        MissoesDTO newMissao = missoesService.criar(missaoDTO);
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body("Missao " + newMissao.getNome() + " criado com sucesso");
     }
 
     //Metodo READ
     @GetMapping("/listarTodos")
-    public List<MissoesDTO> listarAll(){
-        return missoesService.listarTodos();
+    public ResponseEntity<List<MissoesDTO>> listarAll()
+    {
+        List<MissoesDTO> missaoAll = missoesService.listarTodos();
+        return ResponseEntity.ok(missaoAll);
     }
 
     @GetMapping("/listar/{id}")
-    public MissoesDTO listarID(@PathVariable Long id){
-        return missoesService.listarID(id);
+    public ResponseEntity<?> listarID(@PathVariable Long id){
+
+        if(missoesService.listarID(id) != null){
+            MissoesDTO missoesDTO = missoesService.listarID(id);
+            return ResponseEntity.ok(missoesDTO);
+        }else{
+            return  ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("Nao foi possivel localizar a Missao com o ID: " + id);
+        }
     }
 
     //Metodos UPDATE
     @PutMapping("/atualizar/{id}")
-    public MissoesDTO atualizar(@PathVariable Long id, @RequestBody MissoesDTO missaoDTO){
-        return missoesService.atualizar(id,missaoDTO);    }
+    public ResponseEntity<?> atualizar(@PathVariable Long id, @RequestBody MissoesDTO missaoDTO){
+        MissoesDTO missaoUpdate = missoesService.atualizar(id,missaoDTO);
+        if(missaoUpdate != null){
+            return  ResponseEntity.ok(missaoUpdate);
+        }else{
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("Nao foi possivel atualizar missao com ID: " + id + " nao existe em nosso registros");
+        }
+    }
 
     //Metodo DELETE
     @DeleteMapping("/deletar/{id}")
-    public void deletar(@PathVariable Long id){
-        missoesService.deletar(id);
+    public ResponseEntity<String> deletar(@PathVariable Long id){
+
+        if(missoesService.listarID(id) != null){
+            missoesService.deletar(id);
+            return ResponseEntity.ok("Missao com ID: " + id + " deletado com sucessoi");
+        }else{
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("Nao foi possivel exlcuir misaso com ID: " + id + " nao existe em nossos registros");
+        }
+
     }
 
 
 
 }
+
+
