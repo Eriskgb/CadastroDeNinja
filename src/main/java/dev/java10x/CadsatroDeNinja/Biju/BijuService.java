@@ -10,8 +10,8 @@ import java.util.stream.Collectors;
 @Service
 public class BijuService {
 
-    BijuRepository bijuRepository;
-    BijuMapper bijuMapper;
+    private BijuRepository bijuRepository;
+    private BijuMapper bijuMapper;
 
     //Declarando os contrutores das injecoes de depencencias
     public BijuService(BijuRepository bijuRepository, BijuMapper bijuMapper) {
@@ -32,12 +32,25 @@ public class BijuService {
                 .map(bijuMapper::map)
                 .collect(Collectors.toList());
     }
-
     //Metodo para listar por ID
     public BijuDTO listarID(Long id){
         Optional<BijuModel> bijuID = bijuRepository.findById(id);
         return bijuID.map(bijuMapper::map).orElse(null);
     }
+    //Metodo para atualizar
+    public BijuDTO update(Long id, BijuDTO bijuDTO){
+        Optional<BijuModel> bijuExiste = bijuRepository.findById(id);
+        if(bijuExiste.isPresent()){
+            BijuModel bijuUpdate = bijuMapper.map(bijuDTO);
+            bijuUpdate.setId(id);
+            BijuModel bijuSave = bijuRepository.save(bijuUpdate);
+            return bijuMapper.map(bijuSave);
+        }else{
+            return null;
+        }
+
+    }
+
 
     //Metodo para Deletar
     public void deletar(Long id){

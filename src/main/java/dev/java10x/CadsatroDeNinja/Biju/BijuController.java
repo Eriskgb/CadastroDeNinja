@@ -45,7 +45,17 @@ public class BijuController {
                    .body("Nao foi encontrado Biju com o ID: "+ id );
        }
     }
-
+    //UPDATE
+    @PutMapping("/atualizar/{id}")
+    public ResponseEntity<String> atualizar(@PathVariable Long id, @RequestBody BijuDTO bijuDTO){
+        BijuDTO bijuUpdate = bijuService.update(id,bijuDTO);
+        if(bijuUpdate != null){
+            return ResponseEntity.ok("Biju "+ bijuUpdate.getNome() + " Cadastra com sucesso");
+        }else{
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("Biju com ID " + id + " Nao existe no banco de dados");
+        }
+    }
     //DELETE
     @DeleteMapping("/deletar/{id}")
     public ResponseEntity<?> deletar(@PathVariable Long id){
