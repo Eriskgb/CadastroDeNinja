@@ -22,9 +22,11 @@ public class NinjaModel {
     private String imgUrl;
     private int idade;
     private String rank;
+
     @ManyToOne// um unico ninja so pode ter apenas um missao por vez
     @JoinColumn(name = "missoes_id")//Foreingkey ou chave estrangeira
     private MissoesModel missao;
+
     @ManyToOne
     @JoinColumn(name = "jinchuriki_id")
     private BijuModel jinchuriki;

@@ -16,7 +16,6 @@ public class NinjaService {
         this.ninjaRepository = ninjaRepository;
         this.ninjasMapper = ninjasMapper;
     }
-
     //metodo para consultar todos os ninjas do cadastro
     public List<NinjasDTO> listarTodos(){
         List<NinjaModel> ninjas = ninjaRepository.findAll(); //Armazendo o resultado da consulta de todos o cadastro na List
@@ -24,7 +23,6 @@ public class NinjaService {
                 .map(ninjasMapper::map)
                 .collect(Collectors.toList()); //Transformando o conteudo de uma lista Organizada e pocessada.
     }
-
     //Metodo para listsar os ninjas por ID
     public NinjasDTO listarId (Long id){
        Optional<NinjaModel> ninjaModel = ninjaRepository.findById(id); //Verificando a existencia do ID passado no paramettro e armazenando na varial
