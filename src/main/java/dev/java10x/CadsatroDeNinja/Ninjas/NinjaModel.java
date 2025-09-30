@@ -1,4 +1,5 @@
 package dev.java10x.CadsatroDeNinja.Ninjas;
+import dev.java10x.CadsatroDeNinja.Biju.BijuModel;
 import dev.java10x.CadsatroDeNinja.Missoes.MissoesModel;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -24,4 +25,8 @@ public class NinjaModel {
     @ManyToOne// um unico ninja so pode ter apenas um missao por vez
     @JoinColumn(name = "missoes_id")//Foreingkey ou chave estrangeira
     private MissoesModel missao;
+    @ManyToOne
+    @JoinColumn(name = "jinchuriki_id")
+    private BijuModel jinchuriki;
+
 }

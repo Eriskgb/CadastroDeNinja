@@ -1,4 +1,5 @@
 package dev.java10x.CadsatroDeNinja.Ninjas;
+import dev.java10x.CadsatroDeNinja.Biju.BijuModel;
 import dev.java10x.CadsatroDeNinja.Missoes.MissoesModel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -17,4 +18,5 @@ public class NinjasDTO {
     private int idade;
     private String rank;
     private MissoesModel missao;
+    private BijuModel jinchuriki;
 }
