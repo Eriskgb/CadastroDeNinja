@@ -1,4 +1,5 @@
 package dev.java10x.CadsatroDeNinja.Ninjas;
+import dev.java10x.CadsatroDeNinja.Aldeia.AldeiaModel;
 import dev.java10x.CadsatroDeNinja.Biju.BijuModel;
 import dev.java10x.CadsatroDeNinja.Missoes.MissoesModel;
 import jakarta.persistence.*;
@@ -30,5 +31,9 @@ public class NinjaModel {
     @ManyToOne
     @JoinColumn(name = "jinchuriki_id")
     private BijuModel jinchuriki;
+
+    @ManyToOne
+    @JoinColumn(name = "aldeia_id")
+    private AldeiaModel aldeia;
 
 }
