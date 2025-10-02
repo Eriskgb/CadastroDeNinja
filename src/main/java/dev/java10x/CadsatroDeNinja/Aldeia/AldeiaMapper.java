@@ -22,6 +22,7 @@ public class AldeiaMapper {
         aldeiaModel.setNome(aldeiaDTO.getNome());
         aldeiaModel.setPais(aldeiaDTO.getPais());
         aldeiaModel.setNinja(aldeiaDTO.getNinja());
+
         return map(aldeiaDTO);
     }
 
