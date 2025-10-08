@@ -7,12 +7,12 @@ public class AldeiaMapper {
     public AldeiaDTO map(AldeiaModel aldeiaModel){
 
         AldeiaDTO aldeiaDTO = new AldeiaDTO();
-        aldeiaDTO.setId(aldeiaDTO.getId());
-        aldeiaDTO.setNome(aldeiaDTO.getNome());
-        aldeiaDTO.setPais(aldeiaDTO.getPais());
-        aldeiaDTO.setNinja(aldeiaModel.getNinja());
 
-        return map(aldeiaModel);
+        aldeiaDTO.setId(aldeiaModel.getId());
+        aldeiaDTO.setNome(aldeiaModel.getNome());
+        aldeiaDTO.setPais(aldeiaModel.getPais());
+        aldeiaDTO.setNinja(aldeiaModel.getNinja());
+        return aldeiaDTO;
     }
 
     public AldeiaModel map(AldeiaDTO aldeiaDTO){
@@ -23,7 +23,7 @@ public class AldeiaMapper {
         aldeiaModel.setPais(aldeiaDTO.getPais());
         aldeiaModel.setNinja(aldeiaDTO.getNinja());
 
-        return map(aldeiaDTO);
+        return aldeiaModel;
     }
 
 }
