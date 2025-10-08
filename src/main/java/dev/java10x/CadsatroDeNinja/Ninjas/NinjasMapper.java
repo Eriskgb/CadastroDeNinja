@@ -17,6 +17,7 @@ public class NinjasMapper {
         ninjaModel.setRank(ninjasDTO.getRank());
         ninjaModel.setMissao(ninjasDTO.getMissao());
         ninjaModel.setJinchuriki((ninjasDTO.getJinchuriki()));
+        ninjaModel.setAldeia(ninjasDTO.getAldeia());
 
         //retorando a entidade NinjaModel
         return ninjaModel;
@@ -35,6 +36,7 @@ public class NinjasMapper {
         ninjasDTO.setRank(ninjaModel.getRank());
         ninjasDTO.setMissao(ninjaModel.getMissao());
         ninjasDTO.setJinchuriki(ninjaModel.getJinchuriki());
+        ninjasDTO.setAldeia(ninjaModel.getAldeia());
         return ninjasDTO;
     }
 
