@@ -8,7 +8,6 @@ public class BijuMapper {
     public BijuDTO map(BijuModel bijuModel){
 
         BijuDTO  bijuDTO = new BijuDTO();
-
         bijuDTO.setId(bijuModel.getId());
         bijuDTO.setNome(bijuModel.getNome());
         bijuDTO.setQtdCaldas(bijuModel.getQtdCaldas());
