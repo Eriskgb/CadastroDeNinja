@@ -2,7 +2,6 @@ package dev.java10x.CadsatroDeNinja.Aldeia;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -38,6 +37,7 @@ public class AldeiaController {
         return ResponseEntity.status(HttpStatus.NOT_FOUND)
                 .body("Nao existe registro com o ID" + id + " no sistema");
     }
+    //UPDATE
     @PutMapping("/atualizar")
     public ResponseEntity<?> atualizar(@PathVariable Long id, @RequestBody AldeiaDTO aldeiaDTO){
         if(aldeiaService.update(id,aldeiaDTO) != null){
@@ -47,6 +47,7 @@ public class AldeiaController {
                     .body("Nao foi encontrado cadastro com o ID " + id);
         }
     }
+    //DELETE
     @DeleteMapping("/deletar/{id}")
     public ResponseEntity<String> deletar(@PathVariable Long id){
         AldeiaDTO aldeiaDeletar = aldeiaService.listarID(id);

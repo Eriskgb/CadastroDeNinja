@@ -1,6 +1,7 @@
 package dev.java10x.CadsatroDeNinja.Ninjas;
 import dev.java10x.CadsatroDeNinja.Aldeia.AldeiaModel;
 import dev.java10x.CadsatroDeNinja.Biju.BijuModel;
+import dev.java10x.CadsatroDeNinja.Doujutsu.DoujutsuModel;
 import dev.java10x.CadsatroDeNinja.Missoes.MissoesModel;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -36,4 +37,11 @@ public class NinjaModel {
     @JoinColumn(name = "aldeia_id")
     private AldeiaModel aldeia;
 
+    @ManyToOne
+    @JoinColumn(name = "doujutsu_id")
+    private DoujutsuModel doujutsu;
+
+
 }
+
+
