@@ -7,6 +7,7 @@ public class DoujutsuMapper {
 
     public DoujutsuModel map(DoujutsuDTO doujutsuDTO) {
         DoujutsuModel doujutsuModel = new DoujutsuModel();
+
         doujutsuModel.setId(doujutsuDTO.getId());
         doujutsuModel.setNome(doujutsuDTO.getNome());
         doujutsuModel.setNinja(doujutsuDTO.getNinja());
