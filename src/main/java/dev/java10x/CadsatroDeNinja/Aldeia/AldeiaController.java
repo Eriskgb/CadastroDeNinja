@@ -38,7 +38,7 @@ public class AldeiaController {
                 .body("Nao existe registro com o ID" + id + " no sistema");
     }
     //UPDATE
-    @PutMapping("/atualizar")
+    @PutMapping("/atualizar/{id}")
     public ResponseEntity<?> atualizar(@PathVariable Long id, @RequestBody AldeiaDTO aldeiaDTO){
         if(aldeiaService.update(id,aldeiaDTO) != null){
             return ResponseEntity.ok(aldeiaDTO);
