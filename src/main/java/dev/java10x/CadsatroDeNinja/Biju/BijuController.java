@@ -10,7 +10,7 @@ import java.util.List;
 @RequestMapping("/biju")
 public class BijuController {
 
-     BijuService bijuService;
+     private final BijuService bijuService;
 
     public BijuController(BijuService bijuService) {
         this.bijuService = bijuService;

@@ -8,7 +8,7 @@ import java.util.List;
 @RequestMapping("/aldeia")
 public class AldeiaController {
 
-    private AldeiaService aldeiaService;
+    private final AldeiaService aldeiaService;
 
     public AldeiaController(AldeiaService aldeiaService) {
         this.aldeiaService = aldeiaService;

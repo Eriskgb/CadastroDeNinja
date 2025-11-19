@@ -10,8 +10,8 @@ import java.util.stream.Collectors;
 @Service
 public class BijuService {
 
-    private BijuRepository bijuRepository;
-    private BijuMapper bijuMapper;
+    private final BijuRepository bijuRepository;
+    private final BijuMapper bijuMapper;
 
     //Declarando os contrutores das injecoes de depencencias
     public BijuService(BijuRepository bijuRepository, BijuMapper bijuMapper) {

@@ -8,7 +8,7 @@ import java.util.List;
 @RequestMapping("/doujutsus")
 public class DoujutsuController {
 
-    DoujutsuService doujutsuService;
+    private final DoujutsuService doujutsuService;
 
     public DoujutsuController(DoujutsuService doujutsuService) {
         this.doujutsuService = doujutsuService;

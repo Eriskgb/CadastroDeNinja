@@ -9,8 +9,8 @@ import java.util.stream.Collectors;
 @Service
 public class AldeiaService {
 
-    private AldeiaRepository aldeiaRepository;
-    private AldeiaMapper aldeiaMapper;
+    private final AldeiaRepository aldeiaRepository;
+    private final AldeiaMapper aldeiaMapper;
 
     public AldeiaService(AldeiaRepository aldeiaRepository, AldeiaMapper aldeiaMapper) {
         this.aldeiaRepository = aldeiaRepository;

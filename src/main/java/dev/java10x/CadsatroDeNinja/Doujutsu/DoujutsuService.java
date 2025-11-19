@@ -7,8 +7,8 @@ import static java.util.stream.Collectors.toList;
 @Service
 public class DoujutsuService {
 
-    DoujutsuRepository doujutsuRepository;
-    DoujutsuMapper doujutsuMapper;
+    private final DoujutsuRepository doujutsuRepository;
+    private final DoujutsuMapper doujutsuMapper;
 
     public DoujutsuService(DoujutsuRepository doujutsuRepository, DoujutsuMapper doujutsuMapper) {
         this.doujutsuRepository = doujutsuRepository;
